@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ADD_SUBDIRECTORY(bdpatch)
+ADD_SUBDIRECTORY(bgmtool)
 ADD_SUBDIRECTORY(capgrep)
 ADD_SUBDIRECTORY(decrypt)
 ADD_SUBDIRECTORY(encrypt)
