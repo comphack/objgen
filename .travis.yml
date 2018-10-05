@@ -70,5 +70,5 @@ before_install:
   - export CTEST_OUTPUT_ON_FAILURE=1
 
 script:
-  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then mkdir -p build && cd build && cmake -DBUILD_OPTIMIZED=OFF -G "${GENERATOR}" .. && cmake --build . --target git-version && cmake --build . ; fi
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then mkdir -p build && cd build && cmake -DBUILD_OPTIMIZED=OFF -G "${GENERATOR}" .. && cmake --build . ; fi
 #  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target test ; fi
