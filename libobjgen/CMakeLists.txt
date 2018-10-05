@@ -1,6 +1,6 @@
 # This file is part of COMP_hack.
 #
-# Copyright (C) 2010-2016 COMP_hack Team <compomega@tutanota.com>
+# Copyright (C) 2010-2018 COMP_hack Team <compomega@tutanota.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -120,3 +120,6 @@ IF(NOT BSD)
     CREATE_GTESTS(LIBS objgen ${CMAKE_THREAD_LIBS_INIT}
         SRCS ${${PROJECT_NAME}_TEST_SRCS})
 ENDIF(NOT BSD)
+
+INSTALL(TARGETS objgen DESTINATION lib)
+INSTALL(DIRECTORY src/ DESTINATION include PATTERN *.h)

@@ -18,7 +18,6 @@ install:
   - cinst doxygen.portable graphviz.portable
 
 init:
-  - if %platform%==x64 (set CMAKE_PREFIX_PATH=C:\Qt\5.10.1\msvc2015_64) else (set CMAKE_PREFIX_PATH=C:\Qt\5.10.1\msvc2015)
   - if %platform%==x64 (set generator=Visual Studio 14 2015 Win64) else (set generator=Visual Studio 14 2015)
   - if %platform%==x64 (set msplatform=x64) else (set msplatform=Win32)
 
@@ -36,13 +35,11 @@ build_script:
   - 7z x external.zip
   - del external.zip
   - mv external* ..\binaries
-  - cmake -DGENERATE_DOCUMENTATION=ON -DWINDOWS_SERVICE=ON -DCMAKE_INSTALL_PREFIX="%appveyor_build_folder%\build\install" -DCMAKE_CUSTOM_CONFIGURATION_TYPES="%configuration%" -G"%generator%" ..
+  - cmake -DGENERATE_DOCUMENTATION=OFF -DCMAKE_INSTALL_PREFIX="%appveyor_build_folder%\build\install" -DCMAKE_CUSTOM_CONFIGURATION_TYPES="%configuration%" -G"%generator%" ..
   - cmake --build . --config %configuration% --target package
-  - cmake --build . --config %configuration% --target doc
-  - 7z a comp_hack-api.zip api
 
 artifacts:
-  - path: build\comp_hack-*.msi
-    name: comp_hack_installer
-  - path: build\comp_hack-*.zip
-    name: comp_hack_archive
+  - path: build\objgen-*.msi
+    name: objgen_installer
+  - path: build\objgen-*.zip
+    name: objgen_archive
