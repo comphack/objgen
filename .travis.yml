@@ -72,6 +72,7 @@ before_install:
 script:
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then mkdir -p build && cd build && cmake -DBUILD_OPTIMIZED=OFF -G "${GENERATOR}" .. && cmake --build . ; fi
 #  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target test ; fi
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target package ; fi
 
 deploy:
   provider: releases
