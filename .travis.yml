@@ -73,7 +73,7 @@ script:
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then mkdir -p build && cd build && cmake -DBUILD_OPTIMIZED=OFF -G "${GENERATOR}" .. && cmake --build . ; fi
 #  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target test ; fi
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target package ; fi
-  - mv objgen-*-Linux.tar.bz2 objgen-${BUILD_NAME}.tar.bz2
+  - mv objgen-*.tar.bz2 objgen-${BUILD_NAME}.tar.bz2
 
 deploy:
   provider: releases
