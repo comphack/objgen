@@ -73,11 +73,13 @@ script:
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then mkdir -p build && cd build && cmake -DBUILD_OPTIMIZED=OFF -G "${GENERATOR}" .. && cmake --build . ; fi
 #  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target test ; fi
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then cmake --build . --target package ; fi
+  - mv objgen-*-Linux.tar.bz2 objgen-${BUILD_NAME}.tar.bz2
 
 deploy:
   provider: releases
   api_key:
     secure: PD/5vIlz1MQd7pOz0eJxzWvH3p2T/npsdINuPsOhAB8skOc+OvGcSq6PKuqmJpLx0/fmno3UeoRt3RP29iAJvsEjI+EhmZS+n65illo1IkTRMoRpHsJBompiI9F8bpbEh6ImtXN27XjW0gyIg/uA/5sLRcJtVuSWeBtA3AFuo9RlaHLGZ0KMQ3CI3ueWXirTXALJHOOFmUhBKtaEid/zVJsvg9bponwq2Jn0PztoaM8RmhUXpcOhGlpgXtx8Av25RRa0jkd/XGFoXAK//3svtq2DUBm6XGaamkYo6HJjVO4C0bMvJzenoqjGkIQ3fUFo5YvIsw7bm2GDARVJhWgrbe8PFEXgEMOKue60uEPUrVnpgOEgD50HkF2sgiL8k6f1GUlS58kbu5AyhDP/p5LGbDvIHUNxAJ6dqUNlLud5WVsTMzUwYt8hMlFMh9At74q60UXhl4nkc5WGtfbCsqQDqbGxbMAayPVmWtnjvt6JavU7D2XWd3gE7PiOESTIlHlbLcmiepHNvPEmzRMRQpbYXBJWuDiNdr9t5iyGb7Wl2LJq8tY7nb4BPhqvSdJ8YWu5wkK5BSoE4sjxPdr3RCVhVqiH9vAl3QWhVU7p3ItbrcvFyL13R+Ug74dgVnKKnEMOE2op54SxfbKGOgI0vWzhdUFGeWydmFWADsNJeKFQhxA=
+  skip_cleanup: true
   file_glob: true
   file: objgen*.tar.bz2
   on:
